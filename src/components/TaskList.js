@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button, ButtonGroup, Container, Table } from 'reactstrap';
-import AppNavbar from './AppNavbar';
+import { Button, Container, Table } from 'reactstrap';
+import AppNavbar from '../AppNavbar';
 import TaskModal from "./TaskModal";
 
 class GroupList extends Component {
@@ -46,13 +46,9 @@ class GroupList extends Component {
     }
 
     handleCreate = (newTask) => {
-        console.log("zavolan handleCreate: " + newTask);
-
         const maxId = Math.max.apply(Math, this.state.tasks.map(function (task) {return task.id}))
         newTask.id = maxId + 1;
         const tasks = [newTask, ...this.state.tasks];
-
-        console.log(tasks);
 
         this.setState({tasks, showCreateModal: false});
         console.log(this.state.tasks);
